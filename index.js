@@ -24,9 +24,11 @@ client.on('message', (message) =>{
 
 client.on('message', (message) => {
     if(message.content.startsWith (':rank')) {
-      message.reply('https://cdn.discordapp.com/attachments/489843725007192074/517043007690899485/unknown.png');
+        const attachment = new Attachment('https://cdn.discordapp.com/attachments/489843725007192074/517043007690899485/unknown.png');
+        message.channel.send(attachment);
     }
-  });
+});
+
   
   client.on('message', (message) =>{
     if (message.content === 'Sergio Ramos')  {
