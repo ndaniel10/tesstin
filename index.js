@@ -1,22 +1,13 @@
 const Discord = require ('discord.js');
 const client = new Discord.Client ();
 const { Client, Attachment } = require('discord.js');
-const bot = new Discord.Client({disableEveryone: true});
 
 
 client.on('ready', () => {
   console.log('I am ready!');
 });
 
-bot.on("ready", async () => {
-  console.log(`${bot.user.username} is online!`);
-
-  bot.user.setActivity("tutorials on TSC", {type: "WATCHING"});
-
-  //bot.user.setGame("on SourceCade!");
-});
-
-bot.on("message", async message => {
+client.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
 
