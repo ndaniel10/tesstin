@@ -1,6 +1,7 @@
 const Discord = require ('discord.js');
 const client = new Discord.Client ();
 const { Client, Attachment } = require('discord.js');
+const bot = new Discord.Client({disableEveryone: true});
 
 
 client.on('ready', () => {
