@@ -22,7 +22,7 @@ client.on('message', message => {
 
 });
 
-bot.on('message', (message) =>{
+client.on('message', (message) =>{
     if(message.content.startsWith(':a')) {
         message.channel.send('Shut up you`re gay')
     
