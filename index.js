@@ -1,4 +1,3 @@
-const botconfig = require("./botconfig.json");
 const Discord = require ('discord.js');
 const client = new Discord.Client ();
 const { Client, Attachment } = require('discord.js');
@@ -18,7 +17,7 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
-  if(cmd === `${prefix}kick`){
+  if(cmd === `:kick`){
 
     //!kick @daeshan askin for it
 
@@ -46,7 +45,7 @@ bot.on("message", async message => {
     return;
   }
 
-  if(cmd === `${prefix}ban`){
+  if(cmd === `:ban`){
 
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Can't find user!");
@@ -74,7 +73,7 @@ bot.on("message", async message => {
   }
 
 
-  if(cmd === `${prefix}report`){
+  if(cmd === `:report`){
 
     //!report @ned this is the reason
 
@@ -104,7 +103,7 @@ bot.on("message", async message => {
 
 
 
-  if(cmd === `${prefix}serverinfo`){
+  if(cmd === `:serverinfo`){
 
     let sicon = message.guild.iconURL;
     let serverembed = new Discord.RichEmbed()
@@ -121,7 +120,7 @@ bot.on("message", async message => {
 
 
 
-  if(cmd === `${prefix}botinfo`){
+  if(cmd === `:{prefix}botinfo`){
 
     let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
