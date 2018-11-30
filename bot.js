@@ -22,6 +22,15 @@ client.on('message', message => {
 
 });
 
+bot.on('message', (message) =>{
+    if(message.content.startsWith(':a')) {
+        message.channel.send('Shut up you`re gay')
+    
+        message.delete(message)
+    } 
+    
+});
+
  
 
 // THIS  MUST  BE  THIS  WAY
