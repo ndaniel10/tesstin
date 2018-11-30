@@ -233,4 +233,4 @@ bot.on('message', (message) =>{
  
 });
 
-bot.login('NTE3MDI5MDU4OTA3OTk2MTYy.Dt8Shg.fBpgsyeaVTPGluIFOHXxxIkD96Q')
+client.login(process.env.BOT_TOKEN);//where BOT_TOKEN is the token of our bot
