@@ -2,22 +2,11 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
-const { Client, Attachment } = require('discord.js');
-
 
 client.on('ready', () => {
   console.log('I am ready!');
 });
 
-client.on('message', message => {
-    // If the message is '!rip'
-    if (message.content === '!rip') {
-        // Create the attachment using Attachment
-        const attachment = new Attachment('https://i.imgur.com/w3duR07.png');
-        // Send the attachment in the message channel
-        message.channel.send(attachment);
-    }
-});
  
 
 client.on('message', message => {
