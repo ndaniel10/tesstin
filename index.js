@@ -3,11 +3,6 @@ const client = new Discord.Client ();
 const { Client, Attachment } = require('discord.js');
 
 
-client.on('ready', () => {
-  console.log('I am ready!');
-});
-
-
 //general and messages
 
 client.on('message', (message) =>{
