@@ -8,6 +8,14 @@ client.on('ready', () => {
   console.log('I am ready!');
 });
 
+bot.on("ready", async () => {
+  console.log(`${bot.user.username} is online!`);
+
+  bot.user.setActivity("tutorials on TSC", {type: "WATCHING"});
+
+  //bot.user.setGame("on SourceCade!");
+});
+
 bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
@@ -97,6 +105,6 @@ client.on('guildMemberAdd', member => {
   if (!channel) return;
   channel.send(`Go to ▶verification◀ for the next step ${member}`);
 });
-
+});
 
 client.login(process.env.BOT_TOKEN);//where BOT_TOKEN is the token of our bot
