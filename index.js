@@ -9,7 +9,7 @@ client.on('ready', () => {
 
 
 client.on('message', (message) =>{
-    if(message.content.startsWith(':a')) {
+    if(message.content === ':a') {
         message.channel.send('Shut up you`re a gay faggot')
     
         message.delete(message)
@@ -18,7 +18,7 @@ client.on('message', (message) =>{
 });
 
 client.on('message', (message) =>{
-    if(message.content.startsWith(':b')) {
+    if(message.content === ':b') {
         message.channel.send('wa')
     
         message.delete(message)
@@ -27,7 +27,7 @@ client.on('message', (message) =>{
 });
 
 client.on('message', (message) => {
-    if(message.content.startsWith (':rank')) {
+    if(message.content === ':rank') {
         const attachment = new Attachment('https://cdn.discordapp.com/attachments/489843725007192074/517043007690899485/unknown.png');
         message.channel.send(attachment);
     }
