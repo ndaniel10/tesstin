@@ -26,7 +26,7 @@ client.on('message', message => {
 
     if (message.content === 'Sergio Ramos') {
 
-       message.reply('http://i37.tinypic.com/ok0pqd.jpg%27);
+       message.reply('http://i37.tinypic.com/ok0pqd.jpg');
 
        }
 
