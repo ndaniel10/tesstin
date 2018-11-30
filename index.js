@@ -1,9 +1,25 @@
 const Discord = require ('discord.js');
 const client = new Discord.Client ();
 const { Client, Attachment } = require('discord.js');
+//messages
+
+/**
+ * An example of how you can send embeds
+ */
+
+// Extract the required classes from the discord.js module
 const { Client, RichEmbed } = require('discord.js');
 
-//messages
+// Create an instance of a Discord client
+const client = new Client();
+
+/**
+ * The ready event is vital, it means that only _after_ this will your bot start reacting to information
+ * received from Discord
+ */
+client.on('ready', () => {
+  console.log('I am ready!');
+});
 
 client.on('message', message => {
   // If the message is "how to embed"
@@ -15,7 +31,7 @@ client.on('message', message => {
       // Set the title of the field
       .setTitle('A slick little embed')
       // Set the color of the embed
-      .setColor(0x7289DA)
+      .setColor(0xFF0000)
       // Set the main content of the embed
       .setDescription('Hello, this is a slick embed!');
     // Send the embed to the same channel as the message
