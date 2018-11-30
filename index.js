@@ -66,7 +66,7 @@ client.on('message', message => {
       // Set the title of the field
       .setTitle('A slick little embed')
       // Set the color of the embed
-      .setColor(#0x7289DA)
+      .setColor(##7FFF00)
       // Set the main content of the embed
       .setDescription('Hello, this is a slick embed!');
     // Send the embed to the same channel as the message
