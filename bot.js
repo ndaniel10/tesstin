@@ -22,6 +22,16 @@ client.on('message', message => {
 
 });
 
+client.on('message', message => {
+
+    if (message.content === 'Sergio Ramos') {
+
+       message.reply('http://i37.tinypic.com/ok0pqd.jpg');
+
+       }
+
+});
+
  
 
 // THIS  MUST  BE  THIS  WAY
