@@ -7,35 +7,42 @@ client.on('ready', () => {
   console.log('I am ready!');
 });
 
-if (message.content === ':ban')  {
-  let bUser = message.guild.member(message.mentions.members.first() || message.guild.members.get(args[0]));
-  if (!bUser) return message.channel.send("Can't find user!");
-  let bReason = args.join(" ").slice(22);
-  if (!message.member.hasPermission("SLAVES")) return message.channel.send("No can do pal!");
-  if (bUser.hasPermission("NGOLO KANYE ROYAL")) return message.channel.send("That person can't be banned!");
+bot.on("message", async message => {
+  if(message.author.bot) return;
+  if(message.channel.type === "dm") return;
 
-  let banEmbed = new Discord.RichEmbed()
-    .setDescription("Ban Management")
-    .setColor("#bc0000")
-    .addField("Banned User", `${bUser.user.tag} with ID ${bUser.id}`)
-    .addField("Banned By", `<@${message.author.id}> with ID ${message.author.id}`)
-    .addField("Banned In", message.channel.name)
+  let prefix = botconfig.prefix;
+  let messageArray = message.content.split(" ");
+  let cmd = messageArray[0];
+  let args = messageArray.slice(1);
+
+  if(cmd === `:kick`){
+
+    //!kick @daeshan askin for it
+
+    let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!kUser) return message.channel.send("Can't find user!");
+    let kReason = args.join(" ").slice(22);
+    if(!message.member.hasPermission("SLAVES")) return message.channel.send("No can do pal!");
+    if(kUser.hasPermission("NGOLO KANYE ROYAL")) return message.channel.send("That person can't be kicked!");
+
+    let kickEmbed = new Discord.RichEmbed()
+    .setDescription("~Kick~")
+    .setColor("#e56b00")
+    .addField("Kicked User", `${kUser} with ID ${kUser.id}`)
+    .addField("Kicked By", `<@${message.author.id}> with ID ${message.author.id}`)
+    .addField("Kicked In", message.channel)
     .addField("Time", message.createdAt)
-    .addField("Reason", bReason);
+    .addField("Reason", kReason);
 
-  let incidentchannel = message.guild.channels.find(`name`, "incidents");
-  if (!incidentchannel) return message.channel.send("Can't find incidents channel.");
+    let kickChannel = message.guild.channels.find(`name`, "incidents");
+    if(!kickChannel) return message.channel.send("Can't find incidents channel.");
 
-  message.guild.member(bUser).ban({
-    reason: bReason
-  });
-  message.delete();
-  incidentchannel.send({
-    embed: banEmbed
-  });
+    message.guild.member(kUser).kick(kReason);
+    kickChannel.send(kickEmbed);
 
-  return;
-}
+    return;
+  }
 
 //general and messages
 
