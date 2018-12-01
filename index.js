@@ -2,41 +2,40 @@ const Discord = require ('discord.js');
 const client = new Discord.Client ();
 const { Client, Attachment } = require('discord.js');
 
-//moderations
-if (member.hasPermission('KICK_MEMBERS')) {
-    console.log('This member can kick');
-     // Ignore messages that aren't from a guild
-  if (!message.guild) return;
 
-  // If the message content starts with "!kick"
-  if (message.content.startsWith(':kick')) {
-    
-    const user = message.mentions.users.first();
-  
-    if (user) {
-      const member = message.guild.member(user);
-      if (member) {
-       
-        member.kick('Optional reason that will display in the audit logs').then(() => {
-          message.reply(`Successfully kicked ${user.tag}`);
-        }).catch(err => {
-         
-          message.reply('I was unable to kick the member');
-          console.error(err);
-        });
-      } else {
-        message.reply('That user isn\'t in this guild!');
-      }
-    } else {
-      message.reply('You didn\'t mention the user to kick!');
-    }
-  }
-}
- 
 
 client.on('ready', () => {
   console.log('I am ready!');
 });
+
+//moderations
+if(command === ":kick") {
+    // This command must be limited to mods and admins. In this example we just hardcode the role names.
+    // Please read on Array.some() to understand this bit: 
+    // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some?
+    if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
+      return message.reply("Sorry, you don't have permissions to use this!");
+    
+    // Let's first check if we have a member and if we can kick them!
+    // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
+    // We can also support getting the member by ID, which would be args[0]
+    let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+    if(!member)
+      return message.reply("Please mention a valid member of this server");
+    if(!member.kickable) 
+      return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
+    
+    // slice(1) removes the first part, which here should be the user mention or ID
+    // join(' ') takes all the various parts to make it a single string.
+    let reason = args.slice(1).join(' ');
+    if(!reason) reason = "No reason provided";
+    
+    // Now, time for a swift kick in the nuts!
+    await member.kick(reason)
+      .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
+    message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
+
+  }
 
 //general and messages
 
