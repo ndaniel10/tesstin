@@ -9,7 +9,8 @@ client.on('ready', () => {
 });
 
 //moderations
-if(command === ":kick") {
+client.on("message", async message => {
+  if(command === ":kick") {
     // This command must be limited to mods and admins. In this example we just hardcode the role names.
     // Please read on Array.some() to understand this bit: 
     // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some?
@@ -36,7 +37,7 @@ if(command === ":kick") {
     message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
 
   }
-
+});
 //general and messages
 
 client.on('message', (message) =>{
