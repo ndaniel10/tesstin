@@ -2,6 +2,8 @@ const Discord = require ('discord.js');
 const client = new Discord.Client ();
 const { Client, Attachment } = require('discord.js');
 
+  bot.user.setActivity("Minecraft Porn™", {type: "WATCHING"});
+
 
 //moderations
 
