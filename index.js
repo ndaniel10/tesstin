@@ -54,7 +54,7 @@ client.on("message", async message => {
 
 client.on('message', (message) =>{
     if(message.content === ':a') {
-        message.channel.send('Shut up you`re a gay faggot')
+        message.channel.send('Shut up you`re a gay faggot :middle_finger:')
     
         message.delete(message)
     } 
