@@ -10,6 +10,20 @@ client.on('ready', () => {
 
 //moderations
 client.on("message", async message => {
+  // This event will run on every single message received, from any channel or DM.
+  
+  // It's good practice to ignore other bots. This also makes your bot ignore itself
+  // and not get into a spam loop (we call that "botception").
+  if(message.author.bot) return;
+  
+  // Also good practice to ignore any message that does not start with our prefix, 
+  // which is set in the configuration file.  
+  // Here we separate our "command" name, and our "arguments" for the command. 
+  // e.g. if we have the message "+say Is this the real life?" , we'll get the following:
+  // command = say
+  // args = ["Is", "this", "the", "real", "life?"]
+  const command = args.shift().toLowerCase();
+  
   if(command === ":kick") {
     // This command must be limited to mods and admins. In this example we just hardcode the role names.
     // Please read on Array.some() to understand this bit: 
